@@ -4,3 +4,14 @@
 
 /* Fixed WhatsApp contact, mobile-safe and visible after age confirmation */
 .whatsapp-float{position:fixed;right:max(20px,env(safe-area-inset-right));bottom:max(24px,env(safe-area-inset-bottom));z-index:40;display:flex;align-items:center;justify-content:center;width:62px;height:62px;border-radius:50%;background:#25d366;color:white;box-shadow:0 8px 26px #0008;border:2px solid #ffffff40;transition:transform .2s,background .2s}.whatsapp-float:hover{transform:translateY(-3px);background:#1eaf55}.whatsapp-float svg{width:34px;height:34px}.whatsapp-float:focus-visible{outline:3px solid #fff;outline-offset:3px}@media(max-width:600px){.whatsapp-float{width:56px;height:56px;right:16px;bottom:max(18px,env(safe-area-inset-bottom))}.whatsapp-float svg{width:31px;height:31px}}@media(prefers-reduced-motion:reduce){.whatsapp-float{transition:none}}
+
+/* Editorial two-portrait homepage presentation */
+.hero-editorial{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.62fr);align-items:end;gap:14px;min-width:0;padding:22px 0 22px 12px}
+.hero-editorial figure{margin:0;overflow:hidden;background:#211d19;border:1px solid #c8a87970;box-shadow:0 20px 55px #0006}
+.hero-editorial-main{height:560px;grid-column:1;grid-row:1}
+.hero-editorial-secondary{height:355px;grid-column:2;grid-row:1;transform:translateY(34px)}
+.hero-editorial img{display:block;width:100%;height:100%;object-fit:cover;object-position:center top}
+.hero-editorial-main img{object-position:48% 20%}
+.hero-editorial-secondary img{object-position:50% 14%}
+@media(max-width:800px){.hero-editorial{padding:8px 0 20px;gap:10px}.hero-editorial-main{height:clamp(340px,85vw,580px)}.hero-editorial-secondary{height:clamp(240px,58vw,400px);transform:translateY(18px)}}
+@media(max-width:420px){.hero-editorial{grid-template-columns:minmax(0,1fr) minmax(0,.67fr);gap:8px}.hero-editorial-main{height:370px}.hero-editorial-secondary{height:260px;transform:translateY(14px)}}
