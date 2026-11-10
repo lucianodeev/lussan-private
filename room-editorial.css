@@ -1,0 +1,9 @@
+
+/* Illustrative premium room feature */
+.room-editorial{max-width:1250px;display:grid;grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr);align-items:center;gap:42px;padding-top:70px;padding-bottom:70px}
+.room-editorial-copy h2{font:400 clamp(34px,4vw,60px)/1.12 Georgia,serif;margin:20px 0}
+.room-editorial-copy p{color:#ddd1c0;font-size:17px;line-height:1.7}
+.room-editorial-copy small{display:block;color:#b4a89b;font-size:12px;margin-top:22px}
+.room-editorial-image{margin:0;min-width:0;overflow:hidden;border:1px solid #d8bd8850;background:#211b15;aspect-ratio:16/10}
+.room-editorial-image img{width:100%;height:100%;display:block;object-fit:cover}
+@media(max-width:760px){.room-editorial{grid-template-columns:1fr;gap:24px;padding:55px 20px}.room-editorial-image{aspect-ratio:4/3}}
