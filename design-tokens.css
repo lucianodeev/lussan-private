@@ -158,3 +158,51 @@ nav .nav-booking { color: var(--premium-gold); }
 @media (max-width: 520px) {
   .availability-panel { grid-template-columns: minmax(0, 1fr); }
 }
+
+#ageGate {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 16px;
+}
+
+#ageGate .gate-card {
+  flex: none;
+  width: 100%;
+  max-width: 440px;
+  margin-block: auto;
+  padding: clamp(18px, 5vw, 30px);
+  border-radius: 12px;
+}
+
+.gate-portrait {
+  display: block;
+  width: clamp(72px, 16vh, 120px);
+  height: auto;
+  margin: 0 auto 14px;
+  border: 1px solid var(--premium-gold);
+  border-radius: 8px;
+}
+
+#ageGate h2 {
+  margin: 8px 0;
+  font-size: clamp(26px, 7vw, 35px);
+  line-height: 1.12;
+}
+
+#ageGate p {
+  margin: 0 0 16px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+#ageGate button {
+  margin-top: 8px;
+  padding: 10px 12px;
+}
+
+#ageGate .outline:hover {
+  color: var(--premium-bg);
+}
