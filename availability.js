@@ -1,1 +1,57 @@
-'use strict';(()=>{const host=document.querySelector('#experiences');if(!host)return;const wrap=document.createElement('section');wrap.id='availability';wrap.className='availability-panel';wrap.innerHTML='<h3 id="availability-heading"></h3><p id="availability-description"></p><form id="availability-form"><label for="availability-city"></label><select id="availability-city" required><option value="Bruxelles - Schaerbeek">Bruxelles · Schaerbeek (base)</option><option value="travel">Verificar disponibilidade para viagem</option></select><label for="availability-date"></label><input id="availability-date" type="date" required><button type="submit"></button></form><p id="availability-note"></p>';host.append(wrap);const dict={pt:['Consultar disponibilidade','Atendimento em Bruxelles · Schaerbeek. Para viagens a outras cidades, consulta a disponibilidade por mensagem.','Cidade','Data pretendida','ENVIAR PEDIDO','Este formulário não confirma uma reserva.'],fr:['Consulter les disponibilités','Basé à Bruxelles · Schaerbeek. Pour les déplacements dans d’autres villes, disponibilité sur demande.','Ville','Date souhaitée','ENVOYER LA DEMANDE','Ce formulaire ne confirme pas une réservation.'],en:['Check availability','Based in Brussels · Schaerbeek. Travel to other cities is subject to availability on request.','City','Preferred date','SEND REQUEST','This form does not confirm a booking.'],nl:['Beschikbaarheid aanvragen','Gevestigd in Brussel · Schaarbeek. Voor reizen naar andere steden: beschikbaarheid op aanvraag.','Stad','Gewenste datum','AANVRAAG VERSTUREN','Dit formulier bevestigt geen boeking.'],es:['Consultar disponibilidad','Con base en Bruselas · Schaerbeek. Para viajes a otras ciudades, consulta la disponibilidad.','Ciudad','Fecha deseada','ENVIAR SOLICITUD','Este formulario no confirma una reserva.']};function language(){return document.documentElement.lang.toLowerCase().split('-')[0]}function translate(){const t=dict[language()]||dict.pt;wrap.querySelector('#availability-heading').textContent=t[0];wrap.querySelector('#availability-description').textContent=t[1];wrap.querySelector('label[for="availability-city"]').textContent=t[2];wrap.querySelector('label[for="availability-date"]').textContent=t[3];wrap.querySelector('button').textContent=t[4];wrap.querySelector('#availability-note').textContent=t[5]}translate();new MutationObserver(translate).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});const date=wrap.querySelector('#availability-date');function today(){const d=new Date();return [d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-')}date.min=today();date.addEventListener('focus',()=>{date.min=today()});wrap.querySelector('form').addEventListener('submit',e=>{e.preventDefault();if(!e.currentTarget.reportValidity())return;if(date.value<today()){date.value='';date.reportValidity();return}const city=wrap.querySelector('#availability-city').value;const travel=city==='travel';const msg='Hello Lussan, I would like to ask about '+(travel?'travel availability (destination to be discussed)':'availability in Bruxelles · Schaerbeek')+'. Date: '+date.value+'. Please confirm if available.';window.open('https://wa.me/351915365474?text='+encodeURIComponent(msg),'_blank','noopener,noreferrer')})})();
+'use strict';
+
+(() => {
+  const form = document.querySelector('#availability-form');
+  if (!form) return;
+
+  const city = form.querySelector('#availability-city');
+  const date = form.querySelector('#availability-date');
+  const messages = {
+    pt: {
+      brussels: 'Olá, Lussan! Tens disponibilidade em Bruxelas · Schaerbeek no dia',
+      travel: 'Olá, Lussan! Gostaria de consultar disponibilidade para um encontro noutra cidade no dia',
+    },
+    fr: {
+      brussels: 'Bonjour Lussan ! Es-tu disponible à Bruxelles · Schaerbeek le',
+      travel: 'Bonjour Lussan ! Es-tu disponible pour un rendez-vous dans une autre ville le',
+    },
+    en: {
+      brussels: 'Hi Lussan! Are you available in Brussels · Schaerbeek on',
+      travel: 'Hi Lussan! Are you available for an appointment in another city on',
+    },
+    nl: {
+      brussels: 'Hallo Lussan! Ben je beschikbaar in Brussel · Schaarbeek op',
+      travel: 'Hallo Lussan! Ben je beschikbaar voor een afspraak in een andere stad op',
+    },
+    es: {
+      brussels: '¡Hola, Lussan! ¿Tienes disponibilidad en Bruselas · Schaerbeek el',
+      travel: '¡Hola, Lussan! ¿Tienes disponibilidad para una cita en otra ciudad el',
+    },
+  };
+
+  function today() {
+    const now = new Date();
+    return [
+      now.getFullYear(),
+      String(now.getMonth() + 1).padStart(2, '0'),
+      String(now.getDate()).padStart(2, '0'),
+    ].join('-');
+  }
+
+  date.min = today();
+  date.addEventListener('focus', () => { date.min = today(); });
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    date.min = today();
+    if (!form.reportValidity()) return;
+
+    const lang = document.documentElement.lang;
+    const template = (messages[lang] || messages.pt)[city.value];
+    const formattedDate = new Intl.DateTimeFormat(lang, {
+      dateStyle: 'long',
+      timeZone: 'UTC',
+    }).format(new Date(date.value));
+    const message = `${template} ${formattedDate}?`;
+    window.open(`https://wa.me/351915365474?text=${encodeURIComponent(message)}`, '_blank', 'noopener,noreferrer');
+  });
+})();
