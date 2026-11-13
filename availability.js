@@ -6,6 +6,8 @@
 
   const city = form.querySelector('#availability-city');
   const date = form.querySelector('#availability-date');
+  const duration = form.querySelector('#availability-duration');
+  const time = form.querySelector('#availability-time');
   const messages = {
     pt: {
       brussels: 'Olá, Lussan! Tens disponibilidade em Bruxelas · Schaerbeek no dia',
@@ -51,7 +53,9 @@
       dateStyle: 'long',
       timeZone: 'UTC',
     }).format(new Date(date.value));
-    const message = `${template} ${formattedDate}?`;
+    const detailLabels = {pt:['Duração','Hora'],fr:['Durée','Heure'],en:['Duration','Time'],nl:['Duur','Tijd'],es:['Duración','Hora']};
+    const labels = detailLabels[lang] || detailLabels.pt;
+    const message = `${template} ${formattedDate}? ${labels[0]}: ${duration.value} min. ${labels[1]}: ${time.value}.`;
     window.open(`https://wa.me/351915365474?text=${encodeURIComponent(message)}`, '_blank', 'noopener,noreferrer');
   });
 })();
