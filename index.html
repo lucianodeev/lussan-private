@@ -16,12 +16,13 @@
   <link rel="stylesheet" href="room-editorial.css?v=1">
   <link rel="stylesheet" href="premium-ux.css?v=20261113">
   <link rel="stylesheet" href="phase2.css?v=20261113">
-  <link rel="stylesheet" href="home-gallery.css?v=20261113">
+  <link rel="stylesheet" href="home-gallery.css?v=carousel1">
   <script src="script.js?v=solo" defer>
   </script>
   <script src="gallery-categories.js" defer>
   </script>
   <script src="phase2-gallery.js?v=20261113" defer></script>
+  <script src="home-carousel.js?v=1" defer></script>
   <script src="availability.js?v=phase2" defer>
   </script>
 </head>
@@ -61,8 +62,8 @@
   </section>
 
   <section class="home-photo-showcase" aria-label="Fotografias em destaque">
-    <div class="home-photo-head"><span class="eyebrow">LUSSAN PRIVATE</span><a href="#gallery" data-i="seeGallery">Ver fotografias</a></div>
-    <div class="home-photo-grid">
+    <div class="home-photo-head"><span class="eyebrow">LUSSAN PRIVATE</span><div class="home-photo-controls"><a href="#gallery" data-i="seeGallery">Ver fotografias</a><button type="button" class="home-photo-prev" aria-label="Fotografia anterior">‹</button><button type="button" class="home-photo-next" aria-label="Próxima fotografia">›</button></div></div>
+    <div class="home-photo-grid" role="region" aria-roledescription="carousel" aria-label="Fotografias de Lussan" tabindex="0">
       <a href="#gallery" aria-label="Ver galeria completa — fotografia 1"><img src="assets/lussan-galeria-novembro-01.webp" alt="Lussan sentado com luz dourada" loading="eager" decoding="async" fetchpriority="high"></a>
       <a href="#gallery" aria-label="Ver galeria completa — fotografia 2"><img src="assets/lussan-galeria-novembro-02.webp" alt="Lussan sentado de frente" loading="eager" decoding="async"></a>
       <a href="#gallery" aria-label="Ver galeria completa — fotografia 3"><img src="assets/lussan-galeria-novembro-03.webp" alt="Lussan com roupa desportiva preta e azul" loading="lazy" decoding="async"></a>
