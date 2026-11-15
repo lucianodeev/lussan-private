@@ -56,6 +56,6 @@
     const detailLabels = {pt:['Duração','Hora'],fr:['Durée','Heure'],en:['Duration','Time'],nl:['Duur','Tijd'],es:['Duración','Hora']};
     const labels = detailLabels[lang] || detailLabels.pt;
     const message = `${template} ${formattedDate}? ${labels[0]}: ${duration.value} min. ${labels[1]}: ${time.value}.`;
-    window.open(`https://wa.me/351915365474?text=${encodeURIComponent(message)}`, '_blank', 'noopener,noreferrer');
+    window.open(`https://wa.me/32465341715?text=${encodeURIComponent(message)}`, '_blank', 'noopener,noreferrer');
   });
 })();
